@@ -4,6 +4,9 @@
 
 @section('contents')
     <div class="row">
-        Dashboard
+        <div class="col-md-12">
+            <h3>Dashboard</h3>
+            <p>Jumlah Produk: {{ $productCount }}</p>
+        </div>
     </div>
 @endsection

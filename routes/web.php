@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,8 +22,12 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+        // Ambil jumlah produk yang dimiliki oleh pengguna yang sedang login
+        $productCount = Auth::user()->products()->count();
+
+        // Kirim jumlah produk ke tampilan dashboard
+        return view('dashboard', compact('productCount'));
+    })->middleware('auth')->name('dashboard');
 
     Route::controller(ProductController::class)->prefix('products')->group(function () {
         Route::get('', 'index')->name('products');
