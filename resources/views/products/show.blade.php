@@ -5,10 +5,18 @@
 @section('contents')
     <h1 class="mb-0">Detail Product</h1>
     <hr />
+    <div class="col-md-4 mb-3">
+        <div class="card border-0 shadow-sm rounded">
+            <div class="card-body">
+                <img src="{{ asset('/storage/' . $product->image) }}" class="rounded" style="width: 100%">
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col mb-3">
             <label class="form-label">Title</label>
-            <input type="text" name="title" class="form-control" placeholder="Title" value="{{ $product->title }}" readonly>
+            <input type="text" name="title" class="form-control" placeholder="Title" value="{{ $product->title }}"
+                readonly>
         </div>
         <div class="col mb-3">
             <label class="form-label">Price</label>

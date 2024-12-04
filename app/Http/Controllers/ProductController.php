@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -80,9 +81,31 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        $product->update($request->all());
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric',
+            'product_code' => 'required',
+            'description' => 'nullable',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Optional image update
+        ]);
 
-        return redirect()->route('products')->with('success', 'product updated successfully');
+        // Jika ada file gambar baru diupload
+        if ($request->hasFile('image')) {
+            // Hapus gambar lama jika ada
+            if ($product->image && Storage::disk('public')->exists($product->image)) {
+                Storage::disk('public')->delete($product->image);
+            }
+
+            // Upload gambar baru
+            $imagePath = $request->file('image')->store('products', 'public');
+            $validatedData['image'] = $imagePath;
+        }
+
+        // Update produk
+        $product->update($validatedData);
+
+        return redirect()->route('products')->with('success', 'Product updated successfully');
     }
 
     /**
