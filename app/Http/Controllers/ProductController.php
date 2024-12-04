@@ -13,7 +13,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::orderBy('created_at', 'DESC')->get();
+        $product = Product::where('user_id', auth()->id())
+            ->orderBy('created_at', 'DESC')
+            ->get();
 
         return view('products.index', compact('product'));
     }
@@ -46,6 +48,7 @@ class ProductController extends Controller
                 'product_code' => $request->input('product_code'),
                 'description' => $request->input('description'),
                 'image' => $imagePath, // Simpan path relatif
+                'user_id' => auth()->id(),
             ]);
 
             return redirect()->route('products')->with('success', 'Product added successfully');
@@ -69,7 +72,9 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::where('id', $id)
+            ->where('user_id', auth()->id())
+            ->firstOrFail();
 
         return view('products.edit', compact('product'));
     }
