@@ -27,7 +27,10 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6 d-flex justify-content-center align-items-center">
+                                <img src="https://soc-uat-uploads.s3.amazonaws.com/f5c362b2-2aa3-4143-9b54-1808733238a3-94687664152-1729152771332.png"
+                                    alt="Login Image" class="img-fluid">
+                            </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
