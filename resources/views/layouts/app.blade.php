@@ -16,6 +16,9 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('admin_assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
+    @vite('resources/css/app.css')
+
 </head>
 
 <body id="page-top">
@@ -79,6 +82,8 @@
     <script src="{{ asset('admin_assets/js/sb-admin-2.min.js') }}"></script>
     <!-- Page level plugins -->
     <script src="{{ asset('admin_assets/vendor/chart.js/Chart.min.js') }}"></script>
+
+
 </body>
 
 </html>

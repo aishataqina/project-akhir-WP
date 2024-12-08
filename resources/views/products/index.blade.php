@@ -30,6 +30,7 @@
             @if ($product->count() > 0)
                 @foreach ($product as $rs)
                     <tr>
+                        {{-- <p class="font-semibold text-blue-500">hhhxhx</p> --}}
                         <td class="align-middle">{{ $loop->iteration }}</td>
                         <td class="align-middle">
                             <img src="{{ asset('storage/' . $rs->image) }}" alt="{{ $rs->title }}"
@@ -41,16 +42,16 @@
                         <td class="align-middle">{{ $rs->product_code }}</td>
                         <td class="align-middle">{{ $rs->description }}</td>
                         <td class="align-middle">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="{{ route('products.show', $rs->id) }}" type="button"
-                                    class="btn btn-secondary">Detail</a>
-                                <a href="{{ route('products.edit', $rs->id) }}" type="button"
-                                    class="btn btn-warning">Edit</a>
+                            <div class="btn-group flex gap-3" role="group" aria-label="Basic example">
+                                <a href="{{ route('products.show', $rs->id) }}" type="button">
+                                    <button class="btn btn-secondary">Detail</button></a>
+                                <a href="{{ route('products.edit', $rs->id) }}" type="button">
+                                    <button class="btn btn-warning">Edit</button></a></a>
                                 <form action="{{ route('products.destroy', $rs->id) }}" method="POST" type="button"
-                                    class="btn btn-danger p-0" onsubmit="return confirm('Delete?')">
+                                    onsubmit="return confirm('Delete?')">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger m-0">Delete</button>
+                                    <button class="btn btn-danger">Delete</button>
                                 </form>
                             </div>
                         </td>
@@ -64,3 +65,26 @@
         </tbody>
     </table>
 @endsection
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    //message with sweetalert
+    @if (session('success'))
+        Swal.fire({
+            icon: "success",
+            title: "BERHASIL",
+            text: "{{ session('success') }}",
+            showConfirmButton: false,
+            timer: 2000
+        });
+    @elseif (session('error'))
+        Swal.fire({
+            icon: "error",
+            title: "GAGAL!",
+            text: "{{ session('error') }}",
+            showConfirmButton: false,
+            timer: 2000
+        });
+    @endif
+</script>

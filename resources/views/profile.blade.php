@@ -51,12 +51,36 @@
     </form>
 @endsection
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+
+@if (session('success'))
+    <div class = "alert alert-success" role = "alert">
+        {{ session('success') }} </div>
 @endif
+
+@if (session('error'))
+    <div class = "alert alert-danger" role = "alert">
+        {{ session('error') }} </div>
+@endif
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    @if (session('success'))
+        Swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "{{ session('success') }}",
+            showConfirmButton: false,
+            timer: 2000
+        });
+    @elseif (session('error'))
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "{{ session('error') }}",
+            showConfirmButton: false,
+            timer: 2000
+        });
+    @endif
+</script>

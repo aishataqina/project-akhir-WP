@@ -12,15 +12,15 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('phone')->nullable();  // Tambahkan kolom phone
-            $table->string('address')->nullable(); // Tambahkan kolom address
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
         });
     }
 
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['phone', 'address']); // Hapus kolom jika migrasi di-rollback
+            $table->dropColumn(['phone', 'address']);
         });
     }
 };

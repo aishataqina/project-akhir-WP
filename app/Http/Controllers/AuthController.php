@@ -75,9 +75,16 @@ class AuthController extends Controller
             ]);
 
             $user = Auth::user();
-            $user->phone = $validatedData['phone'] ?? $user->phone;
-            $user->address = $validatedData['address'] ?? $user->address;
-            $user->save();
+
+            if (!$user) {
+                return redirect()->route('login')->with('error', 'You must be logged in to update the profile.');
+            }
+
+            if ($validatedData['phone'] !== $user->phone || $validatedData['address'] !== $user->address) {
+                $user->phone = $validatedData['phone'] ?? $user->phone;
+                $user->address = $validatedData['address'] ?? $user->address;
+                $user->save();  // Save if changes are made
+            }
 
             return redirect()->route('profile')->with('success', 'Profile updated successfully!');
         }

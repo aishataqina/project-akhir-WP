@@ -11,11 +11,18 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $product = Product::where('user_id', auth()->id())
-            ->orderBy('created_at', 'DESC')
-            ->get();
+        // Get the search term from the query string
+        $search = $request->input('search');
+
+        // If there's a search term, filter products by title
+        if ($search) {
+            $product = Product::where('title', 'like', '%' . $search . '%')->get();
+        } else {
+            // If no search term, retrieve all products
+            $product = Product::all();
+        }
 
         return view('products.index', compact('product'));
     }
