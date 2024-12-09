@@ -13,19 +13,38 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        // Get the search term from the query string
         $search = $request->input('search');
 
-        // If there's a search term, filter products by title
+        // Filter produk berdasarkan admin yang login
+        $query = Product::where('user_id', auth()->id());
+
+        // Tambahkan pencarian jika ada input
         if ($search) {
-            $product = Product::where('title', 'like', '%' . $search . '%')->get();
-        } else {
-            // If no search term, retrieve all products
-            $product = Product::all();
+            $query->where('title', 'like', '%' . $search . '%');
         }
+
+        $product = $query->get();
 
         return view('products.index', compact('product'));
     }
+
+
+    // public function index(Request $request)
+    // {
+    //     $search = $request->input('search');
+
+    //     // Ambil hanya produk milik admin yang login
+    //     $query = Product::where('user_id', auth()->id());
+
+    //     // Jika ada kata kunci pencarian, tambahkan filter
+    //     if ($search) {
+    //         $query->where('title', 'like', '%' . $search . '%');
+    //     }
+
+    //     $products = $query->get();
+
+    //     return view('products.index', compact('product'));
+    // }
 
     /**
      * Show the form for creating a new resource.

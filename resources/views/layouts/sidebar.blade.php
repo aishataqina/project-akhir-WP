@@ -5,7 +5,7 @@
         <div class="sidebar-brand-icon rotate-n-15 text-pink-800">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3 text-pink-800">Toko Onlen <sup>{{ auth()->user()->id }}</sup></div>
+        <div class="sidebar-brand-text mx-3 text-pink-800">SO.CO Toko Onlen<sup>{{ auth()->user()->id }}</sup></div>
     </a>
 
     <!-- Divider -->
