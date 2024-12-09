@@ -16,9 +16,10 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('admin_assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    @vite('resources/css/app.css')
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-pink-300">
     <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
@@ -65,7 +66,8 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-block btn-user">Login</button>
+                                        <button type="submit"
+                                            class="btn bg-pink-200 hover:bg-pink-300 btn-block btn-user font-semibold hover:text-black">Login</button>
                                     </form>
                                     <hr>
                                     <div class="text-center">

@@ -45,7 +45,8 @@
 
         <div class="row">
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit"
+                    class="btn bg-pink-200 hover:bg-pink-300 btn-block btn-user font-semibold hover:text-black">Submit</button>
             </div>
         </div>
     </form>

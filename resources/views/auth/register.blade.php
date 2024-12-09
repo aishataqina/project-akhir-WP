@@ -16,9 +16,10 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('admin_assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    @vite('resources/css/app.css')
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-pink-300">
     <div class="container">
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
@@ -69,7 +70,8 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-user btn-block">Register
+                                <button type="submit"
+                                    class="btn bg-pink-200 hover:bg-pink-300 btn-block btn-user font-semibold hover:text-black">Register
                                     Account</button>
                             </form>
                             <hr>

@@ -58,7 +58,8 @@
         </div>
         <div class="row">
             <div class="d-grid">
-                <button class="btn btn-warning">Update</button>
+                <button
+                    class="btn bg-pink-200 hover:bg-pink-300 btn-block btn-user font-semibold hover:text-black">Update</button>
             </div>
         </div>
     </form>

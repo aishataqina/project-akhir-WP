@@ -3,9 +3,10 @@
 @section('title', 'Home Product')
 
 @section('contents')
-    <div class="d-flex align-items-center justify-content-between">
-        <h1 class="mb-0">List Product</h1>
-        <a href="{{ route('products.create') }}" class="btn btn-primary">Add Product</a>
+    <div class="d-flex align-items-center justify-content-between mb-2">
+        <h1 class="">List Product</h1>
+        <a href="{{ route('products.create') }}"
+            class="btn bg-pink-200 hover:bg-pink-300  btn-user font-semibold hover:text-black">Add Product</a>
     </div>
     <hr />
     @if (Session::has('success'))
@@ -13,8 +14,8 @@
             {{ Session::get('success') }}
         </div>
     @endif
-    <table class="table table-hover">
-        <thead class="table-primary">
+    <table class="table table-hove">
+        <thead class="bg-pink-200 hover:bg-pink-300/70 ">
             <tr>
                 <th>#</th>
                 <th>Image</th>

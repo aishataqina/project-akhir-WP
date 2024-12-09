@@ -41,7 +41,8 @@
                         </div>
                     </div>
 
-                    <div class="mt-5 text-center"><button id="btn" class="btn btn-primary profile-button"
+                    <div class="mt-5 text-center"><button id="btn"
+                            class="btn bg-pink-200 hover:bg-pink-300 btn-user font-semibold hover:text-black"
                             type="submit">Save Profile</button></div>
                 </div>
             </div>

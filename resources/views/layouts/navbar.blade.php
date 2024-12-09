@@ -11,7 +11,8 @@
             <input type="text" class="form-control" name="search" placeholder="Search for product"
                 value="{{ request('search') }}">
             <div class="input-group-append">
-                <button class="btn btn-primary" type="submit">
+                <button class="btn bg-pink-200 hover:bg-pink-300 btn-block btn-user font-semibold hover:text-black"
+                    type="submit">
                     <i class="fas fa-search"></i> Search
                 </button>
             </div>
