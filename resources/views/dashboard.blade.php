@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard - Toko Onlen')
+@section('title', 'Dashboard - SO.CO Toko Onlen')
 
 @section('contents')
     <div class="row">
