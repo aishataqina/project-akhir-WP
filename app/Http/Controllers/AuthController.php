@@ -83,12 +83,46 @@ class AuthController extends Controller
             if ($validatedData['phone'] !== $user->phone || $validatedData['address'] !== $user->address) {
                 $user->phone = $validatedData['phone'] ?? $user->phone;
                 $user->address = $validatedData['address'] ?? $user->address;
-                $user->save();  // Save if changes are made
+                $user->save(); // Save if changes are made
             }
 
             return redirect()->route('profile')->with('success', 'Profile updated successfully!');
         }
 
         return view('profile');
+    }
+
+    public function formUser(Request $request)
+    {
+        return view('backend.v_user.form', [
+            'judul' => 'Form Laporan User',
+        ]);
+    }
+
+    public function cetakUser(Request $request)
+    {
+        // Menambahkan aturan validasi
+        $request->validate([
+            'tanggal_awal' => 'required|date',
+            'tanggal_akhir' => 'required|date|after_or_equal:tanggal_awal',
+        ], [
+            'tanggal_awal.required' => 'Tanggal Awal harus diisi.',
+            'tanggal_akhir.required' => 'Tanggal Akhir harus diisi.',
+            'tanggal_akhir.after_or_equal' => 'Tanggal Akhir harus lebih besar atau sama dengan Tanggal Awal.',
+        ]);
+
+        $tanggalAwal = $request->input('tanggal_awal');
+        $tanggalAkhir = $request->input('tanggal_akhir');
+
+        $query = User::whereBetween('created_at', [$tanggalAwal, $tanggalAkhir])
+            ->orderBy('id', 'desc');
+        $user = $query->get();
+
+        return view('backend.v_user.cetak', [
+            'judul' => 'Laporan User',
+            'tanggalAwal' => $tanggalAwal,
+            'tanggalAkhir' => $tanggalAkhir,
+            'cetak' => $user
+        ]);
     }
 }

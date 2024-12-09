@@ -30,12 +30,18 @@
             <span class="text-pink-800">Profile</span></a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('formUser') }}">
+            <i class="fas fa-file-alt text-pink-800"></i>
+            <span class="text-pink-800">Laporan</span></a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
     <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline text-pink-800">
-        <button class="rounded-circle border-0 bg-pink-800 fill-pink-800 text-pink-800" id="sidebarToggle"></button>
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0 " id="sidebarToggle"></button>
     </div>
 
 

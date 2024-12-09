@@ -42,6 +42,9 @@ Route::middleware('auth')->group(function () {
         Route::delete('destroy/{id}', 'destroy')->name('products.destroy');
     });
 
-    Route::get('/profile', [App\Http\Controllers\AuthController::class, 'profile'])->name('profile');
-    Route::post('/profile', [App\Http\Controllers\AuthController::class, 'profile'])->name('profile');
+    Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+    Route::post('/profile', [AuthController::class, 'profile'])->name('profile');
+
+    Route::get('/form-user', [AuthController::class, 'formUser'])->name('formUser');
+    Route::post('/cetak-user', [AuthController::class, 'cetakUser'])->name('cetakUser');
 });
